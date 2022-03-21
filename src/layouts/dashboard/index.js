@@ -15,6 +15,7 @@ Coded by www.creative-tim.com
 
 // @mui material components
 import Grid from "@mui/material/Grid";
+import Card from "@mui/material/Card";
 
 // Material Dashboard 2 React components
 import MDBox from "components/MDBox";
@@ -24,46 +25,63 @@ import DashboardLayout from "examples/LayoutContainers/DashboardLayout";
 import DashboardNavbar from "examples/Navbars/DashboardNavbar";
 import Footer from "examples/Footer";
 import ReportsBarChart from "examples/Charts/BarCharts/ReportsBarChart";
-import ReportsLineChart from "examples/Charts/LineCharts/ReportsLineChart";
-import ComplexStatisticsCard from "examples/Cards/StatisticsCards/ComplexStatisticsCard";
+import HaloReportsBarChart from "examples/Charts/BarCharts/HaloReportsBarChart";
+// import ReportsLineChart from "examples/Charts/LineCharts/ReportsLineChart";
+
+import DefaultDoughnutChart from "examples/Charts/DoughnutCharts/DefaultDoughnutChart";
+import HaloStatisticsCard from "examples/Cards/StatisticsCards/HaloStatisticsCard";
+
+
+import DataTable from "examples/Tables/DataTable";
+
+
 
 // Data
 import reportsBarChartData from "layouts/dashboard/data/reportsBarChartData";
 import reportsLineChartData from "layouts/dashboard/data/reportsLineChartData";
+import projectsTableData from "layouts/tables/data/projectsTableData";
 
 // Dashboard components
 import Projects from "layouts/dashboard/components/Projects";
 import OrdersOverview from "layouts/dashboard/components/OrdersOverview";
+import { Component } from "react";
 
 function Dashboard() {
   const { sales, tasks } = reportsLineChartData;
+  const { columns: pColumns, rows: pRows } = projectsTableData();
 
   return (
     <DashboardLayout>
       <DashboardNavbar />
       <MDBox py={3}>
+
+      <Grid container spacing={3}>
+          <Grid item xs={8} md={8} lg={8}>
+
+            
         <Grid container spacing={3}>
-          <Grid item xs={12} md={6} lg={3}>
+          <Grid item xs={12} md={6} lg={4}>
             <MDBox mb={1.5}>
-              <ComplexStatisticsCard
-                color="dark"
+              <HaloStatisticsCard
+                color="info"
                 icon="weekend"
-                title="Bookings"
+                title="Orders Placed"
                 count={281}
                 percentage={{
-                  color: "success",
+                  color: "info",
                   amount: "+55%",
                   label: "than lask week",
                 }}
               />
             </MDBox>
           </Grid>
-          <Grid item xs={12} md={6} lg={3}>
+          <Grid item xs={12} md={6} lg={4}>
             <MDBox mb={1.5}>
-              <ComplexStatisticsCard
+              <HaloStatisticsCard
                 icon="leaderboard"
-                title="Today's Users"
+                title="In Transit"
                 count="2,300"
+                color="info"
                 percentage={{
                   color: "success",
                   amount: "+3%",
@@ -72,12 +90,12 @@ function Dashboard() {
               />
             </MDBox>
           </Grid>
-          <Grid item xs={12} md={6} lg={3}>
+          <Grid item xs={12} md={6} lg={4}>
             <MDBox mb={1.5}>
-              <ComplexStatisticsCard
-                color="success"
+              <HaloStatisticsCard
+                color="info"
                 icon="store"
-                title="Revenue"
+                title="Delivered Orders"
                 count="34k"
                 percentage={{
                   color: "success",
@@ -87,29 +105,14 @@ function Dashboard() {
               />
             </MDBox>
           </Grid>
-          <Grid item xs={12} md={6} lg={3}>
-            <MDBox mb={1.5}>
-              <ComplexStatisticsCard
-                color="primary"
-                icon="person_add"
-                title="Followers"
-                count="+91"
-                percentage={{
-                  color: "success",
-                  amount: "",
-                  label: "Just updated",
-                }}
-              />
-            </MDBox>
-          </Grid>
         </Grid>
         <MDBox mt={4.5}>
-          <Grid container spacing={3}>
+          <Grid container spacing={2}>
             <Grid item xs={12} md={6} lg={4}>
-              <MDBox mb={3}>
-                <ReportsBarChart
+              <MDBox mb={2}>
+                <HaloReportsBarChart
                   color="info"
-                  title="website views"
+                  title="Performance"
                   description="Last Campaign Performance"
                   date="campaign sent 2 days ago"
                   chart={reportsBarChartData}
@@ -118,27 +121,23 @@ function Dashboard() {
             </Grid>
             <Grid item xs={12} md={6} lg={4}>
               <MDBox mb={3}>
-                <ReportsLineChart
-                  color="success"
-                  title="daily sales"
-                  description={
-                    <>
-                      (<strong>+15%</strong>) increase in today sales.
-                    </>
-                  }
-                  date="updated 4 min ago"
-                  chart={sales}
+              <HaloReportsBarChart
+                  color="info"
+                  title="Returns"
+                  description="Last Campaign Performance"
+                  date="campaign sent 2 days ago"
+                  chart={reportsBarChartData}
                 />
               </MDBox>
             </Grid>
             <Grid item xs={12} md={6} lg={4}>
               <MDBox mb={3}>
-                <ReportsLineChart
-                  color="dark"
-                  title="completed tasks"
+              <HaloReportsBarChart
+                  color="info"
+                  title="Inventory"
                   description="Last Campaign Performance"
-                  date="just updated"
-                  chart={tasks}
+                  date="campaign sent 2 days ago"
+                  chart={reportsBarChartData}
                 />
               </MDBox>
             </Grid>
@@ -154,6 +153,40 @@ function Dashboard() {
             </Grid>
           </Grid>
         </MDBox>
+
+      </Grid>
+
+      <Grid item xs={4} md={4} lg={4}>
+      <Grid container spacing={3}>
+      <Grid item xs={12}>
+
+      <DefaultDoughnutChart
+                  color="info"
+                  title=""
+                  description=" "
+                  date="campaign sent 2 days ago"
+                  chart={reportsBarChartData}
+                  icon= {{ color: "info", component: "" }}
+                />
+                  </Grid>
+          <Grid item xs={12}>
+            <Card>
+
+              <MDBox pt={3}>
+                <DataTable
+                  table={{ columns: pColumns, rows: pRows }}
+                  isSorted={false}
+                  entriesPerPage={false}
+                  showTotalEntries={false}
+                  noEndBorder
+                />
+              </MDBox>
+            </Card>
+          </Grid>
+        </Grid>
+      </Grid>
+    </Grid>
+
       </MDBox>
       <Footer />
     </DashboardLayout>

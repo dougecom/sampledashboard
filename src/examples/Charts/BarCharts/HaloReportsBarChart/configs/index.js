@@ -13,45 +13,20 @@ Coded by www.creative-tim.com
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 */
 
-/* eslint-disable no-dupe-keys */
-// Material Dashboard 2 React base styles
-import colors from "assets/theme/base/colors";
-
-const { gradients, dark } = colors;
-
-function configs(labels, datasets, cutout = 60) {
-  const backgroundColors = [];
-
-  if (datasets.backgroundColors) {
-    datasets.backgroundColors.forEach((color) => {
-      if (gradients[color]) {
-        if (color === "info") {
-          backgroundColors.push(gradients.info.main);
-        } else {
-          backgroundColors.push(gradients[color].state);
-        }
-      } else {
-        backgroundColors.push(dark.main);
-      }
-    });
-  } else {
-    backgroundColors.push(dark.main);
-  }
-
+function configs(labels, datasets) {
   return {
     data: {
       labels,
       datasets: [
         {
           label: datasets.label,
-          weight: 9,
-          cutout,
-          tension: 0.9,
-          pointRadius: 2,
-          borderWidth: 2,
-          backgroundColor: backgroundColors,
-          fill: false,
+          tension: 0.4,
+          borderWidth: 0,
+          borderRadius: 30,
+          borderSkipped: false,
+          backgroundColor: "#59bf8e",
           data: datasets.data,
+          maxBarThickness: 30,
         },
       ],
     },
@@ -63,8 +38,6 @@ function configs(labels, datasets, cutout = 60) {
           display: false,
         },
       },
-      innerRadius: "10%",
-
       interaction: {
         intersect: false,
         mode: "index",
@@ -73,23 +46,47 @@ function configs(labels, datasets, cutout = 60) {
         y: {
           grid: {
             drawBorder: false,
-            display: false,
-            drawOnChartArea: false,
+            display: true,
+            drawOnChartArea: true,
             drawTicks: false,
+            borderDash: [5, 5],
+            color: "rgba(255, 0, 0, .2)",
           },
           ticks: {
-            display: false,
+            suggestedMin: 0,
+            suggestedMax: 500,
+            beginAtZero: true,
+            padding: 10,
+            font: {
+              size: 14,
+              weight: 300,
+              family: "Roboto",
+              style: "normal",
+              lineHeight: 2,
+            },
+            color: "#fff",
           },
         },
         x: {
           grid: {
             drawBorder: false,
-            display: false,
-            drawOnChartArea: false,
+            display: true,
+            drawOnChartArea: true,
             drawTicks: false,
+            borderDash: [5, 5],
+            color: "rgba(255, 0, 0, .2)",
           },
           ticks: {
-            display: false,
+            display: true,
+            color: "#f8f9fa",
+            padding: 10,
+            font: {
+              size: 14,
+              weight: 300,
+              family: "Roboto",
+              style: "normal",
+              lineHeight: 2,
+            },
           },
         },
       },
