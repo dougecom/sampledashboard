@@ -63,6 +63,8 @@ function configs(labels, datasets, cutout = 60) {
           display: false,
         },
       },
+      innerRadius: "10%",
+
       interaction: {
         intersect: false,
         mode: "index",

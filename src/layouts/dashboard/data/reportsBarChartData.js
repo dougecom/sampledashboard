@@ -15,5 +15,5 @@ Coded by www.creative-tim.com
 
 export default {
   labels: ["M", "T", "W"],
-  datasets: { label: "Sales", data: [10, 20, 10], backgroundColor: 'rgb(0, 0, 0)',  },
+  datasets: { label: "Sales", data: [10, 20, 10], color: 'rgb(255, 0, 0)', backgroundColor: 'rgb(255, 0, 0)',  },
 };
