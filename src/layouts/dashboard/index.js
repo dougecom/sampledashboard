@@ -24,8 +24,10 @@ import DashboardLayout from "examples/LayoutContainers/DashboardLayout";
 import DashboardNavbar from "examples/Navbars/DashboardNavbar";
 import Footer from "examples/Footer";
 import ReportsBarChart from "examples/Charts/BarCharts/ReportsBarChart";
-import ReportsLineChart from "examples/Charts/LineCharts/ReportsLineChart";
+import HaloReportsBarChart from "examples/Charts/BarCharts/HaloReportsBarChart";
+// import ReportsLineChart from "examples/Charts/LineCharts/ReportsLineChart";
 import ComplexStatisticsCard from "examples/Cards/StatisticsCards/ComplexStatisticsCard";
+import HaloStatisticsCard from "examples/Cards/StatisticsCards/HaloStatisticsCard";
 
 // Data
 import reportsBarChartData from "layouts/dashboard/data/reportsBarChartData";
@@ -45,13 +47,13 @@ function Dashboard() {
         <Grid container spacing={3}>
           <Grid item xs={12} md={6} lg={3}>
             <MDBox mb={1.5}>
-              <ComplexStatisticsCard
-                color="dark"
+              <HaloStatisticsCard
+                color="info"
                 icon="weekend"
-                title="Bookings"
+                title="Orders Placed"
                 count={281}
                 percentage={{
-                  color: "success",
+                  color: "info",
                   amount: "+55%",
                   label: "than lask week",
                 }}
@@ -60,10 +62,11 @@ function Dashboard() {
           </Grid>
           <Grid item xs={12} md={6} lg={3}>
             <MDBox mb={1.5}>
-              <ComplexStatisticsCard
+              <HaloStatisticsCard
                 icon="leaderboard"
-                title="Today's Users"
+                title="In Transit"
                 count="2,300"
+                color="info"
                 percentage={{
                   color: "success",
                   amount: "+3%",
@@ -74,10 +77,10 @@ function Dashboard() {
           </Grid>
           <Grid item xs={12} md={6} lg={3}>
             <MDBox mb={1.5}>
-              <ComplexStatisticsCard
-                color="success"
+              <HaloStatisticsCard
+                color="info"
                 icon="store"
-                title="Revenue"
+                title="Delivered Orders"
                 count="34k"
                 percentage={{
                   color: "success",
@@ -90,7 +93,7 @@ function Dashboard() {
           <Grid item xs={12} md={6} lg={3}>
             <MDBox mb={1.5}>
               <ComplexStatisticsCard
-                color="primary"
+                color="info"
                 icon="person_add"
                 title="Followers"
                 count="+91"
@@ -104,41 +107,37 @@ function Dashboard() {
           </Grid>
         </Grid>
         <MDBox mt={4.5}>
-          <Grid container spacing={3}>
-            <Grid item xs={12} md={6} lg={4}>
-              <MDBox mb={3}>
-                <ReportsBarChart
+          <Grid container spacing={2}>
+            <Grid item xs={12} md={6} lg={3}>
+              <MDBox mb={2}>
+                <HaloReportsBarChart
                   color="info"
-                  title="website views"
+                  title="Performance"
                   description="Last Campaign Performance"
                   date="campaign sent 2 days ago"
                   chart={reportsBarChartData}
                 />
               </MDBox>
             </Grid>
-            <Grid item xs={12} md={6} lg={4}>
+            <Grid item xs={12} md={6} lg={3}>
               <MDBox mb={3}>
-                <ReportsLineChart
-                  color="success"
-                  title="daily sales"
-                  description={
-                    <>
-                      (<strong>+15%</strong>) increase in today sales.
-                    </>
-                  }
-                  date="updated 4 min ago"
-                  chart={sales}
+              <HaloReportsBarChart
+                  color="info"
+                  title="Performance"
+                  description="Last Campaign Performance"
+                  date="campaign sent 2 days ago"
+                  chart={reportsBarChartData}
                 />
               </MDBox>
             </Grid>
-            <Grid item xs={12} md={6} lg={4}>
+            <Grid item xs={12} md={6} lg={3}>
               <MDBox mb={3}>
-                <ReportsLineChart
-                  color="dark"
-                  title="completed tasks"
+              <HaloReportsBarChart
+                  color="info"
+                  title="Performance"
                   description="Last Campaign Performance"
-                  date="just updated"
-                  chart={tasks}
+                  date="campaign sent 2 days ago"
+                  chart={reportsBarChartData}
                 />
               </MDBox>
             </Grid>
